@@ -1,0 +1,23 @@
+// announcementBar
+.anouncementBar {
+  .anouncementBarItem {
+    font-size: 12px;
+  }
+
+  & :not(:last-child) {
+    margin-right: 12px;
+  }
+}
+
+// navbar
+
+.navbar {
+  .navbarItem {
+    width: calc(100% / 3);
+    display: flex;
+    .navIcon {
+      color: black;
+      font-size: 20px;
+    }
+  }
+}
