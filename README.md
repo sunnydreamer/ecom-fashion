@@ -6,6 +6,7 @@
 - MongoDB
 - MUI
 - SCSS
+- Redux
 
 <b> Font </b>
 

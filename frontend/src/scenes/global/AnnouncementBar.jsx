@@ -28,6 +28,7 @@ function AnnouncementBar() {
           className="anouncementBarItem"
           sx={{
             textDecoration: "underline",
+            cursor: "pointer",
           }}
         >
           Shop Now

@@ -5,6 +5,7 @@ import Checkout from "./scenes/checkout/Checkout";
 import Confirmation from "./scenes/checkout/Confirmation";
 import Navbar from "./scenes/global/Navbar";
 import "./App.scss";
+import CartMenu from "./scenes/global/CartMenu";
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
           <Route path="checkout" element={<Checkout />} />
           <Route path="checkout/success" element={<Confirmation />} />
         </Routes>
+        <CartMenu />
       </BrowserRouter>
     </div>
   );

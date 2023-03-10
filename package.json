@@ -12,6 +12,8 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@mui/lab": "^5.0.0-alpha.122",
+    "@mui/material-next": "^6.0.0-alpha.77",
     "bcryptjs": "^2.4.3",
     "concurrently": "^7.6.0",
     "dotenv": "^16.0.3",
