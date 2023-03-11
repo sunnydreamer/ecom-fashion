@@ -14,15 +14,16 @@ const itemSchema = new mongoose.Schema({
   color: {
     type: String,
   },
+  style: {
+    type: String,
+  },
   tags: {
     type: Array,
     default: [""],
   },
   size: {
-    type: String,
-    enum: {
-      values: ["S", "M", "L", "XL"],
-    },
+    type: Array,
+    default: [""],
   },
   description: {
     type: String,

@@ -29,6 +29,7 @@ exports.createOneItem = async (request, response) => {
       description: request.body.description,
       cal: request.body.cal,
       price: request.body.price,
+      style: request.body.style,
       size: request.body.size,
       tags: request.body.tags,
       color: request.body.color,
@@ -111,24 +112,24 @@ exports.getAllItems = async (request, response) => {
   }
 };
 
-// exports.getCategory = async (request, response) => {
-//   try {
-//     const dishes = await Dish.find({ category: request.params.category });
+exports.getCategory = async (request, response) => {
+  try {
+    const items = await Item.find({ category: request.params.category });
 
-//     // Send response
-//     response.status(200).json({
-//       status: "success",
-//       data: {
-//         dishes,
-//       },
-//     });
-//   } catch (error) {
-//     response.status(404).json({
-//       status: "fail",
-//       message: error.message,
-//     });
-//   }
-// };
+    // Send response
+    response.status(200).json({
+      status: "success",
+      data: {
+        items,
+      },
+    });
+  } catch (error) {
+    response.status(404).json({
+      status: "fail",
+      message: error.message,
+    });
+  }
+};
 
 // exports.getOneDish = async (request, response) => {
 //   try {

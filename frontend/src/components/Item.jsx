@@ -12,15 +12,16 @@ import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { addToCart } from "../state";
 
-function Item() {
+function Item({ element }) {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const [count, setCount] = useState(1);
   const [isHovered, setIsHovered] = useState(false);
   const isNonMobile = useMediaQuery("(min-width:600px)");
+  // console.log(element);
 
   return (
-    <Box margin="25px" width="20%" minWidth="200px">
+    <Box>
       {/* picture showcase */}
       <Box
         position="relative"
@@ -29,7 +30,7 @@ function Item() {
       >
         <img
           width="100%"
-          src={`https://media.everlane.com/image/upload/c_fill,w_1080,ar_250:312,q_auto,dpr_1.0,g_face:center,f_auto,fl_progressive:steep/i/3b3169a0_7937`}
+          src={element.picture}
           onClick={() => navigate(`/item/id`)}
           style={{ cursor: "pointer" }}
         />
@@ -65,10 +66,8 @@ function Item() {
         justifyContent="space-between"
         flexWrap="wrap"
       >
-        <Typography sx={{ marginRight: "20px" }}>
-          The Pima Micro-Rib Crew Tee
-        </Typography>
-        <Typography fontWeight="bold">$40</Typography>
+        <Typography sx={{ marginRight: "20px" }}>{element.name}</Typography>
+        <Typography fontWeight="bold">$ {element.price}</Typography>
       </Box>
     </Box>
   );

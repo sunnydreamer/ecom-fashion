@@ -2,37 +2,92 @@ exports.data = [
   {
     name: "The Pima Micro-Rib Crew Tee",
     picture:
-      "https://media.everlane.com/image/upload/c_fill,w_3840,ar_1:1,q_auto,dpr_1.0,g_face:center,f_auto,fl_progressive:steep/i/c6d8ee40_f93d",
+      "https://media.everlane.com/image/upload/c_fill,w_640,ar_250:312,q_auto,dpr_1.0,g_face:center,f_auto,fl_progressive:steep/i/ed509e3b_e5a8",
     category: "women",
     description:
       "This short-sleeve crewneck tee is made of extra-fine ribbed Supima® cotton with stretch that hugs in just the right places. For days when you want t-shirt comfort with eye-catching good looks.",
     price: 40,
     color: "white",
+    style: "tee",
     tags: ["bestSeller"],
-    size: "S",
+    size: ["XS, S, M, L, XL"],
   },
   {
-    name: "The Easy Pant",
+    name: "The Organic Cotton Box-Cut Tee",
     picture:
-      "https://media.everlane.com/image/upload/c_fill,w_640,ar_1:1,q_auto,dpr_1.0,g_face:center,f_auto,fl_progressive:steep/i/7198c4cd_d88d",
+      "https://media.everlane.com/image/upload/c_fill,w_640,ar_250:312,q_auto,dpr_1.0,g_face:center,f_auto,fl_progressive:steep/i/7c00fdef_1f04",
     category: "women",
     description:
       "This short-sleeve crewneck tee is made of extra-fine ribbed Supima® cotton with stretch that hugs in just the right places. For days when you want t-shirt comfort with eye-catching good looks.",
-    price: 40,
+    price: 35,
     color: "green",
-    tags: ["new"],
-    size: "L",
+    style: "tee",
+    tags: ["newArrival"],
+    size: ["XS, S, M, L, XL"],
   },
   {
-    name: "The Modern Loafer",
+    name: "The Organic Cotton Cardigan",
     picture:
-      "https://media.everlane.com/image/upload/c_fill,dpr_2,f_auto,g_face:center,q_auto,w_auto/v1/i/055c5c8e_51bc.jpg",
+      "https://media.everlane.com/image/upload/c_fill,w_640,ar_250:312,q_auto,dpr_1.0,g_face:center,f_auto,fl_progressive:steep/i/c9ba5425_af9c",
+    category: "women",
+    description:
+      "This short-sleeve crewneck tee is made of extra-fine ribbed Supima® cotton with stretch that hugs in just the right places. For days when you want t-shirt comfort with eye-catching good looks.",
+    price: 130,
+    color: "navy",
+    style: "sweater",
+    tags: ["newArrival"],
+    size: ["XS, S, M, L, XL"],
+  },
+  {
+    name: "The Texture Cotton Cardigan",
+    picture:
+      "https://media.everlane.com/image/upload/c_fill,w_640,ar_250:312,q_auto,dpr_1.0,g_face:center,f_auto,fl_progressive:steep/i/df4774fc_bfa9",
+    category: "women",
+    description:
+      "This short-sleeve crewneck tee is made of extra-fine ribbed Supima® cotton with stretch that hugs in just the right places. For days when you want t-shirt comfort with eye-catching good looks.",
+    price: 128,
+    color: "white",
+    style: "sweater",
+    tags: ["topRated"],
+    size: ["XS, S, M, L, XL"],
+  },
+  {
+    name: "The Carpenter Jean",
+    picture:
+      "https://media.everlane.com/image/upload/c_fill,w_640,ar_250:312,q_auto,dpr_1.0,g_face:center,f_auto,fl_progressive:steep/i/62f485e0_02d9",
+    category: "women",
+    description:
+      "This short-sleeve crewneck tee is made of extra-fine ribbed Supima® cotton with stretch that hugs in just the right places. For days when you want t-shirt comfort with eye-catching good looks.",
+    price: 129,
+    color: "blue",
+    style: "sweater",
+    tags: ["topRated"],
+    size: ["XS, S, M, L, XL"],
+  },
+  {
+    name: "The Easy Workwear Dress",
+    picture:
+      "https://media.everlane.com/image/upload/c_fill,w_640,ar_250:312,q_auto,dpr_1.0,g_face:center,f_auto,fl_progressive:steep/i/d2085873_4a03",
+    category: "women",
+    description:
+      "This short-sleeve crewneck tee is made of extra-fine ribbed Supima® cotton with stretch that hugs in just the right places. For days when you want t-shirt comfort with eye-catching good looks.",
+    price: 129,
+    color: "kalamata",
+    style: "sweater",
+    tags: ["topRated"],
+    size: ["XS, S, M, L, XL"],
+  },
+  {
+    name: "The No-Sweat Full Zip Sweater",
+    picture:
+      "https://media.everlane.com/image/upload/c_fill,w_640,ar_250:312,q_auto,dpr_1.0,g_face:center,f_auto,fl_progressive:steep/i/06558f29_fc03",
     category: "men",
     description:
-      "Made from buttery-soft leather, this 2.0 take features a sleek tapered toe, stitch detailing, and a slightly thicker stacked heel. Plus, we’ve added additional padding and a foam-cushioned insole, so there’s zero break-in needed for your first wear. Dress it up with a trench and trousers or down with a pullover and sweatpants—it looks good with (literally) anything.",
-    price: 40,
-    color: "green",
-    tags: ["new"],
-    size: "L",
+      "This short-sleeve crewneck tee is made of extra-fine ribbed Supima® cotton with stretch that hugs in just the right places. For days when you want t-shirt comfort with eye-catching good looks.",
+    price: 108,
+    color: "black",
+    style: "sweater",
+    tags: ["bestSeller"],
+    size: ["XS, S, M, L, XL"],
   },
 ];
