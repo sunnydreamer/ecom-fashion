@@ -8,8 +8,11 @@ const itemSchema = new mongoose.Schema({
   category: {
     type: String,
   },
-  picture: {
+  categoryPic: {
     type: String,
+  },
+  detailPics: {
+    type: Array,
   },
   color: {
     type: String,
@@ -31,6 +34,9 @@ const itemSchema = new mongoose.Schema({
   price: {
     type: Number,
     required: true,
+  },
+  review: {
+    type: Number,
   },
 });
 

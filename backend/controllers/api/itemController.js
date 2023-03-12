@@ -24,7 +24,8 @@ exports.createOneItem = async (request, response) => {
   try {
     const newItem = await Item.create({
       name: request.body.name,
-      picture: request.body.picture,
+      categoryPic: request.body.categoryPic,
+      detailPics: request.body.detailPics,
       category: request.body.category,
       description: request.body.description,
       cal: request.body.cal,
@@ -33,6 +34,7 @@ exports.createOneItem = async (request, response) => {
       size: request.body.size,
       tags: request.body.tags,
       color: request.body.color,
+      review: request.body.review,
     });
 
     response.status(201).json({
@@ -131,25 +133,25 @@ exports.getCategory = async (request, response) => {
   }
 };
 
-// exports.getOneDish = async (request, response) => {
-//   try {
-//     const dishes = await Dish.find({ _id: request.params.id });
+exports.getOneItem = async (request, response) => {
+  try {
+    const item = await Item.find({ _id: request.params.id });
 
-//     if (!dishes) {
-//       throw new Error("No dish found with that id");
-//     }
+    if (!item) {
+      throw new Error("No dish found with that id");
+    }
 
-//     // Send response
-//     response.status(200).json({
-//       status: "success",
-//       data: {
-//         dishes,
-//       },
-//     });
-//   } catch (error) {
-//     response.status(404).json({
-//       status: "fail",
-//       message: error.message,
-//     });
-//   }
-// };
+    // Send response
+    response.status(200).json({
+      status: "success",
+      data: {
+        item,
+      },
+    });
+  } catch (error) {
+    response.status(404).json({
+      status: "fail",
+      message: error.message,
+    });
+  }
+};

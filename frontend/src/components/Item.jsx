@@ -18,7 +18,6 @@ function Item({ element }) {
   const [count, setCount] = useState(1);
   const [isHovered, setIsHovered] = useState(false);
   const isNonMobile = useMediaQuery("(min-width:600px)");
-  // console.log(element);
 
   return (
     <Box>
@@ -30,8 +29,8 @@ function Item({ element }) {
       >
         <img
           width="100%"
-          src={element.picture}
-          onClick={() => navigate(`/item/id`)}
+          src={element.categoryPic}
+          onClick={() => navigate(`/${element.category}/${element._id}`)}
           style={{ cursor: "pointer" }}
         />
         <Box

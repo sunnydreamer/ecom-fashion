@@ -8,6 +8,7 @@ import "./App.scss";
 import CartMenu from "./scenes/global/CartMenu";
 import CategoryPage from "./scenes/category/CategoryPage";
 import Footer from "./scenes/global/Footer";
+import AboutPage from "./scenes/about/About";
 
 function App() {
   return (
@@ -16,10 +17,11 @@ function App() {
         <Navbar />
         <Routes>
           <Route path="/" element={<Home />} />
+          <Route path="/about" element={<AboutPage />} />
           <Route path="/:category" element={<CategoryPage />} />
-          <Route path="item/:itemId" element={<ItemDetails />} />
           <Route path="checkout" element={<Checkout />} />
           <Route path="checkout/success" element={<Confirmation />} />
+          <Route path="/:category/:itemId" element={<ItemDetails />} />
         </Routes>
         <CartMenu />
         <Footer />

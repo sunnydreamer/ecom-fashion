@@ -10,10 +10,10 @@ export async function getCategory(category) {
   return response;
 }
 
-// export async function getOneDish(category, id) {
-//   const response = await dishesAPI.getOneDish(category, id);
-//   return response;
-// }
+export async function getOneItem(category, id) {
+  const response = await itemsAPI.getOneItem(category, id);
+  return response;
+}
 
 // export async function createOneDish(dishData) {
 //   // Make the network request

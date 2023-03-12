@@ -15,12 +15,26 @@ export const shades = {
     800: "#000000",
     900: "#000000",
   },
+  secondary: {
+    100: "#f7ccd2",
+    200: "#ef99a4",
+    300: "#e66677",
+    400: "#de3349",
+    500: "#d6001c",
+    600: "#ab0016",
+    700: "#800011",
+    800: "#56000b",
+    900: "#2b0006",
+  },
 };
 
 export const theme = createTheme({
   palette: {
     primary: {
       main: shades.primary[500],
+    },
+    secondary: {
+      main: shades.secondary[500],
     },
   },
   typography: {

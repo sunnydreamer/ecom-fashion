@@ -1,6 +1,7 @@
 import * as React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Badge, Box, IconButton, useMediaQuery, Button } from "@mui/material";
+import { shades } from "../../theme";
 
 import {
   PersonOutlined,
@@ -33,6 +34,9 @@ import MenuItem from "@mui/material/MenuItem";
 // redux
 import { setIsCartOpen } from "../../state";
 
+// login
+import LogInForm from "../../components/LogInForm";
+
 function Navbar() {
   const navigate = useNavigate();
   const isNonMobile = useMediaQuery("(min-width:600px)");
@@ -53,12 +57,19 @@ function Navbar() {
     boxShadow: 12,
   };
 
-  const [modalOpen, setModalOpen] = React.useState(false);
-  const handleModalOpen = () => {
-    setModalOpen(true);
+  const [modal1Open, setModal1Open] = React.useState(false);
+  const handleModal1Open = (value) => {
+    setModal1Open(true);
     handleClose();
   };
-  const handleModalClose = () => setModalOpen(false);
+  const handleModal1Close = () => setModal1Open(false);
+
+  const [modal2Open, setModal2Open] = React.useState(false);
+  const handleModal2Open = (value) => {
+    setModal2Open(true);
+    handleClose();
+  };
+  const handleModal2Close = () => setModal2Open(false);
 
   // account dropdown
   const [anchorEl, setAnchorEl] = React.useState(null);
@@ -256,31 +267,39 @@ function Navbar() {
                   onClose={handleClose}
                   disableScrollLock={true}
                 >
-                  <MenuItem onClick={handleModalOpen}>Log In</MenuItem>
-                  <MenuItem onClick={handleClose}>Sign Up</MenuItem>
+                  <MenuItem onClick={handleModal1Open}>Log In</MenuItem>
+                  <MenuItem onClick={handleModal2Open}>Sign Up</MenuItem>
                   <MenuItem onClick={handleClose}>Help Center</MenuItem>
                 </Menu>
+                {/* MODAL1 */}
                 <Modal
-                  open={modalOpen}
-                  onClose={handleModalClose}
+                  open={modal1Open}
+                  onClose={handleModal1Close}
                   aria-labelledby="modal-modal-title"
                   aria-describedby="modal-modal-description"
                   disableScrollLock={true}
                 >
-                  <Box sx={style} display="flex">
-                    <Box width="50%">
-                      <Typography
-                        id="modal-modal-title"
-                        variant="h6"
-                        component="h2"
-                      >
-                        Text in a modal
-                      </Typography>
-                      <Typography id="modal-modal-description" sx={{ mt: 2 }}>
-                        Duis mollis, est non commodo luctus, nisi erat porttitor
-                        ligula.
-                      </Typography>
+                  <Box sx={style} display="flex" overflow="hidden">
+                    <LogInForm value={"logIn"} />
+
+                    <Box width="50%" overflow="hidden">
+                      <img
+                        src="https://media.everlane.com/image/upload/c_fill,w_384,ar_380:655,q_auto,dpr_1.0,g_face:center,f_auto,fl_progressive:steep/Modal_Desktop-05102022_pyajh1"
+                        alt=""
+                      />
                     </Box>
+                  </Box>
+                </Modal>
+                {/* MODAL2 */}
+                <Modal
+                  open={modal2Open}
+                  onClose={handleModal2Close}
+                  aria-labelledby="modal-modal-title"
+                  aria-describedby="modal-modal-description"
+                  disableScrollLock={true}
+                >
+                  <Box sx={style} display="flex" overflow="hidden">
+                    <LogInForm value={"signUp"} />
                     <Box width="50%" overflow="hidden">
                       <img
                         src="https://media.everlane.com/image/upload/c_fill,w_384,ar_380:655,q_auto,dpr_1.0,g_face:center,f_auto,fl_progressive:steep/Modal_Desktop-05102022_pyajh1"
