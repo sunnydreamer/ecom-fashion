@@ -27,7 +27,6 @@ const ItemDetails = () => {
   const getItem = async (e) => {
     const oneItem = await getOneItem(category, itemId);
     setItem(oneItem.data.item[0]);
-    // console.log(item);
   };
 
   const handleChange = (event, newValue) => {

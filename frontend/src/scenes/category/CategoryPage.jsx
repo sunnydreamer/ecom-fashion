@@ -39,7 +39,7 @@ function CategoryPage() {
 
   const itemList = items.list
     ? items.list.map((element, i) => {
-        return <Item key={i} element={element} />;
+        return <Item key={`${element._id} +${i}`} element={element} />;
       })
     : [];
 

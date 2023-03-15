@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import {
   Box,
   IconButton,
@@ -8,16 +8,74 @@ import {
 } from "@mui/material";
 import AddIcon from "@mui/icons-material/Add";
 import RemoveIcon from "@mui/icons-material/Remove";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { addToCart } from "../state";
+import { addToCart, increaseCount, decreaseCount } from "../state";
+import { getOneItem } from "../../src/utilities/items-service";
+import { useParams } from "react-router-dom";
 
 function Item({ element }) {
+  // get cart info
+  const cart = useSelector((state) => state.cart.cart);
+  // console.log(cart);
+
+  // find index in the cart
+
+  const existingItemIndex = cart.findIndex(
+    (item) => item.item._id === element._id
+  );
+  // console.log(existingItemIndex);
+  // console.log(cart[existingItemIndex] ? cart[existingItemIndex] : "none");
+
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const [count, setCount] = useState(1);
+  const [count, setCount] = useState(
+    cart[existingItemIndex] ? cart[existingItemIndex].count : 0
+  );
   const [isHovered, setIsHovered] = useState(false);
   const isNonMobile = useMediaQuery("(min-width:600px)");
+
+  // get item
+  const [item, setItem] = useState(null);
+  const { category } = useParams();
+  const itemId = element._id;
+
+  const getItem = async (e) => {
+    const oneItem = await getOneItem(category, itemId);
+    setItem(oneItem.data.item[0]);
+  };
+
+  // ================
+  function increase(elementId, cart) {
+    setCount(count + 1);
+    // console.log(cart);
+
+    const existingItemIndex = cart.findIndex(
+      (item) => item.item._id === elementId
+    );
+    if (existingItemIndex >= 0) {
+      dispatch(increaseCount({ id: cart[existingItemIndex].item._id }));
+    } else {
+      // get item here
+      dispatch(addToCart({ item: { ...item, count } }));
+    }
+  }
+
+  function decrease(elementId, cart) {
+    setCount(Math.max(count - 1, 0));
+    // console.log(cart);
+
+    const existingItemIndex = cart.findIndex(
+      (item) => item.item._id === elementId
+    );
+    // console.log(existingItemIndex);
+
+    dispatch(decreaseCount({ id: cart[existingItemIndex].item._id }));
+  }
+
+  useEffect(() => {
+    getItem();
+  }, []);
 
   return (
     <Box>
@@ -48,11 +106,11 @@ function Item({ element }) {
             borderRadius="10px"
             justifyContent="space-between"
           >
-            <IconButton onClick={() => setCount(Math.max(count - 1, 1))}>
+            <IconButton onClick={() => decrease(element._id, cart)}>
               <RemoveIcon />
             </IconButton>
             <Typography>{count}</Typography>
-            <IconButton onClick={() => setCount(count + 1)}>
+            <IconButton onClick={() => increase(element._id, cart)}>
               <AddIcon />
             </IconButton>
           </Box>

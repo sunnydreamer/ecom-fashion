@@ -45,6 +45,19 @@ function Navbar() {
   const dispatch = useDispatch();
   const cart = useSelector((state) => state.cart.cart);
 
+  // get total count of the cart
+  function getTotalItemCount(cart) {
+    let totalCount = 0;
+
+    if (cart.length > 0) {
+      for (let i = 0; i < cart.length; i++) {
+        totalCount += cart[i].count;
+      }
+    }
+
+    return totalCount;
+  }
+
   // modal
   const style = {
     position: "absolute",
@@ -311,7 +324,7 @@ function Navbar() {
               </div>
             ) : undefined}
             <Badge
-              badgeContent={cart.length}
+              badgeContent={getTotalItemCount(cart)}
               color="secondary"
               invisible={cart.length === 0}
               sx={{
