@@ -1,12 +1,19 @@
 // IMPORT REACT
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 // ADDITIONAL IMPORTS
-// import { login } from "../utilities/users-service";
 import { Link, useNavigate } from "react-router-dom";
+
+// Redux
+import { useDispatch, useSelector } from "react-redux";
+import { setUser } from "../../src/state/slices/userSlice";
 
 // text
 import TextField from "@mui/material/TextField";
+
+// Sign Up
+import { signUp, login } from "../utilities/users-service";
+import Alert from "@mui/material/Alert";
 
 import {
   Badge,
@@ -17,14 +24,21 @@ import {
   Typography,
 } from "@mui/material";
 
-function LogInForm({ value }) {
+function LogInForm({ value, handleModalClose }) {
   const navigate = useNavigate();
   // Create different state variables
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [confirm, setConfirm] = useState("");
   const [error, setError] = useState("");
+
+  // setting type
   const [type, setType] = useState(value);
-  console.log(type);
+
+  // redux
+  const dispatch = useDispatch();
+  const user = useSelector((state) => state.user.user);
+  console.log(user);
 
   // Create a function to handle input changes
   const handleInputChange = (e) => {
@@ -35,23 +49,67 @@ function LogInForm({ value }) {
     }
   };
 
-  // Create a function to handle form submission
-  const handleFormSubmission = async (e) => {
+  // sign up submission
+
+  const handleSignUpSubmission = async (e) => {
     e.preventDefault();
+    setError(null);
+
+    // Retrieve state
+    const state = { email, password, confirm, error };
+    try {
+      // Make a copy of our data
+      const formData = { ...state };
+
+      delete formData["confirm"];
+      delete formData["error"];
+
+      // Send the data to our backend
+      const userData = await signUp(formData);
+
+      // Log the data to the console
+      dispatch(setUser(userData.data));
+      // console.log("currentUserIs");
+
+      console.log("signup form set user");
+      console.log(user);
+
+      // console.log(user);
+      handleModalClose();
+      navigate("/");
+    } catch (error) {
+      setError("Sign Up Failed - Try Again");
+    }
+  };
+
+  // Create a function to handle form submission
+  const handleLogInSubmission = async (e) => {
+    e.preventDefault();
+    setError(null);
+
     try {
       // Retrieve the logged in user
-      //   const user = await login({ email, password });
+      const userData = await login({ email, password });
 
-      //   // Add the user to state
-      //   setUser(user.data);
+      // Add the user to state
+      dispatch(setUser(userData.data));
 
+      handleModalClose();
       navigate("/");
     } catch (error) {
       setError(error.message);
     }
   };
 
+  useEffect(() => {
+    setEmail("");
+    setPassword("");
+    setConfirm("");
+    setError("");
+  }, [type]);
+
   return type === "logIn" ? (
+    // ===============================LOGIN FORM======================================
     <Box
       width="50%"
       padding="20px"
@@ -66,13 +124,18 @@ function LogInForm({ value }) {
       <Typography id="modal-modal-title" variant="h8">
         Please log in to your account.
       </Typography>
-      <Box width="100%" textAlign="center" p="30px 0">
+      {error ? (
+        <Alert severity="error" sx={{ width: "90%", mt: "10px" }}>
+          {error}
+        </Alert>
+      ) : undefined}
+      <Box width="100%" textAlign="center" p="20px 0">
         <Box
           component="form"
-          autoComplete="off" // onSubmit={(e) => {
+          autoComplete="off"
+          // onSubmit={(e) => {
           //   return handleFormSubmission(e);
           // }}
-
           display="flex"
           justifyContent="center"
           flexDirection="column"
@@ -109,6 +172,9 @@ function LogInForm({ value }) {
             type="submit"
             variant="contained"
             style={{ width: "90%", backgroundColor: "gray", padding: "13px" }}
+            onClick={(e) => {
+              return handleLogInSubmission(e);
+            }}
           >
             LOG IN
           </Button>
@@ -127,13 +193,16 @@ function LogInForm({ value }) {
             </Typography>
           </Box>
 
-          <Typography sx={{ textDecoration: "underline", cursor: "pointer" }}>
+          <Typography
+            sx={{ textDecoration: "underline", cursor: "pointer", mt: "3px" }}
+          >
             Reset password
           </Typography>
         </Box>
       </Box>
     </Box>
   ) : (
+    // ===============================SIGNUP FORM======================================
     <Box
       width="50%"
       padding="20px"
@@ -148,13 +217,18 @@ function LogInForm({ value }) {
       <Typography id="modal-modal-title" variant="h8" width="50%" mt="10px">
         Complete your sign up to receive your discount.*
       </Typography>
-      <Box width="100%" textAlign="center" p="30px 0">
+      {error ? (
+        <Alert severity="error" sx={{ width: "90%", mt: "10px" }}>
+          {error}
+        </Alert>
+      ) : undefined}
+      <Box width="100%" textAlign="center" p="20px 0">
         <Box
           component="form"
-          autoComplete="off" // onSubmit={(e) => {
-          //   return handleFormSubmission(e);
-          // }}
-
+          autoComplete="off"
+          onSubmit={(e) => {
+            return handleSignUpSubmission(e);
+          }}
           display="flex"
           justifyContent="center"
           flexDirection="column"
@@ -205,14 +279,14 @@ function LogInForm({ value }) {
                 setType("logIn");
               }}
             >
-              Sign In
+              Log In
             </Typography>
           </Box>
 
           <Typography
             sx={{
               width: "82%",
-              mt: "40px",
+              mt: "25px",
               fontSize: "0.75rem",
               color: "gray",
             }}

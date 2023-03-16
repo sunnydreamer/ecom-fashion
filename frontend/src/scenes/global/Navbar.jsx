@@ -32,19 +32,28 @@ import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
 
 // redux
-import { setIsCartOpen } from "../../state";
+import { setIsCartOpen } from "../../state/slices/cartSlice";
+import { setUser } from "../../state/slices/userSlice";
 
 // login
 import LogInForm from "../../components/LogInForm";
 
+// log out
+import * as userService from "../../utilities/users-service";
+import { useEffect } from "react";
+
 function Navbar() {
+  // test
+  // console.log(localStorage.data);
+
   const navigate = useNavigate();
   const isNonMobile = useMediaQuery("(min-width:600px)");
   const isNonSmall = useMediaQuery("(min-width:1000px)");
   // redux
   const dispatch = useDispatch();
   const cart = useSelector((state) => state.cart.cart);
-
+  const user = useSelector((state) => state.user.user);
+  console.log(user);
   // get total count of the cart
   function getTotalItemCount(cart) {
     let totalCount = 0;
@@ -75,14 +84,16 @@ function Navbar() {
     setModal1Open(true);
     handleClose();
   };
-  const handleModal1Close = () => setModal1Open(false);
+  const handleModalClose = () => {
+    setModal1Open(false);
+    setModal2Open(false);
+  };
 
   const [modal2Open, setModal2Open] = React.useState(false);
   const handleModal2Open = (value) => {
     setModal2Open(true);
     handleClose();
   };
-  const handleModal2Close = () => setModal2Open(false);
 
   // account dropdown
   const [anchorEl, setAnchorEl] = React.useState(null);
@@ -92,6 +103,16 @@ function Navbar() {
   };
   const handleClose = () => {
     setAnchorEl(null);
+  };
+
+  const handleLogOut = (e) => {
+    handleClose();
+    // Call the logout function
+    userService.logOut();
+
+    // Set the user back to null
+    dispatch(setUser([]));
+    navigate("/");
   };
 
   // =================== drawer menu===============
@@ -141,6 +162,14 @@ function Navbar() {
       </List>
     </Box>
   );
+
+  // useEffect set user
+
+  useEffect(() => {
+    // console.log("use effect");
+    dispatch(setUser(localStorage.data));
+    // console.log(user);
+  }, []);
 
   return (
     <Box position="fixed" width="100%" top="0" zIndex="1">
@@ -271,29 +300,62 @@ function Navbar() {
                   aria-expanded={open ? "true" : undefined}
                   onClick={handleClick}
                 >
-                  <PersonOutlined className="navIcon" />
+                  <Badge
+                    color="secondary"
+                    variant="dot"
+                    invisible={user === undefined}
+                  >
+                    <PersonOutlined className="navIcon" />
+                  </Badge>
                 </IconButton>
-
-                <Menu
-                  anchorEl={anchorEl}
-                  open={open}
-                  onClose={handleClose}
-                  disableScrollLock={true}
-                >
-                  <MenuItem onClick={handleModal1Open}>Log In</MenuItem>
-                  <MenuItem onClick={handleModal2Open}>Sign Up</MenuItem>
-                  <MenuItem onClick={handleClose}>Help Center</MenuItem>
-                </Menu>
+                {!localStorage.data ? (
+                  <Menu
+                    anchorEl={anchorEl}
+                    open={open}
+                    onClose={handleClose}
+                    disableScrollLock={true}
+                  >
+                    <MenuItem onClick={handleModal1Open}>Log In</MenuItem>
+                    <MenuItem onClick={handleModal2Open}>Sign Up</MenuItem>
+                    <MenuItem onClick={handleClose}>Help Center</MenuItem>
+                  </Menu>
+                ) : undefined}
+                {localStorage.data ? (
+                  <Menu
+                    anchorEl={anchorEl}
+                    open={open}
+                    onClose={handleClose}
+                    disableScrollLock={true}
+                  >
+                    <MenuItem onClick={handleClose}>Account</MenuItem>
+                    <MenuItem onClick={handleClose}>Order & Return</MenuItem>
+                    <MenuItem onClick={handleClose}>
+                      Redeem a Gift Card
+                    </MenuItem>
+                    <MenuItem onClick={handleClose}>Invite</MenuItem>
+                    <MenuItem onClick={handleClose}>Help Center</MenuItem>
+                    <MenuItem
+                      onClick={() => {
+                        return handleLogOut();
+                      }}
+                    >
+                      Log Out
+                    </MenuItem>
+                  </Menu>
+                ) : undefined}
                 {/* MODAL1 */}
                 <Modal
                   open={modal1Open}
-                  onClose={handleModal1Close}
+                  onClose={handleModalClose}
                   aria-labelledby="modal-modal-title"
                   aria-describedby="modal-modal-description"
                   disableScrollLock={true}
                 >
                   <Box sx={style} display="flex" overflow="hidden">
-                    <LogInForm value={"logIn"} />
+                    <LogInForm
+                      value={"logIn"}
+                      handleModalClose={handleModalClose}
+                    />
 
                     <Box width="50%" overflow="hidden">
                       <img
@@ -306,13 +368,16 @@ function Navbar() {
                 {/* MODAL2 */}
                 <Modal
                   open={modal2Open}
-                  onClose={handleModal2Close}
+                  onClose={handleModalClose}
                   aria-labelledby="modal-modal-title"
                   aria-describedby="modal-modal-description"
                   disableScrollLock={true}
                 >
                   <Box sx={style} display="flex" overflow="hidden">
-                    <LogInForm value={"signUp"} />
+                    <LogInForm
+                      value={"signUp"}
+                      handleModalClose={handleModalClose}
+                    />
                     <Box width="50%" overflow="hidden">
                       <img
                         src="https://media.everlane.com/image/upload/c_fill,w_384,ar_380:655,q_auto,dpr_1.0,g_face:center,f_auto,fl_progressive:steep/Modal_Desktop-05102022_pyajh1"

@@ -9,7 +9,7 @@ import {
   Divider,
 } from "@mui/material";
 import Item from "../../components/Item";
-import { setItems } from "../../state";
+import { setItems } from "../../state/slices/cartSlice";
 import { useParams } from "react-router-dom";
 import { getCategory } from "../../utilities/items-service";
 

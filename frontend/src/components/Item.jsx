@@ -10,7 +10,12 @@ import AddIcon from "@mui/icons-material/Add";
 import RemoveIcon from "@mui/icons-material/Remove";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { addToCart, increaseCount, decreaseCount } from "../state";
+import {
+  addToCart,
+  increaseCount,
+  decreaseCount,
+  removeFromCart,
+} from "../state/slices/cartSlice";
 import { getOneItem } from "../../src/utilities/items-service";
 import { useParams } from "react-router-dom";
 
@@ -70,7 +75,9 @@ function Item({ element }) {
     );
     // console.log(existingItemIndex);
 
-    dispatch(decreaseCount({ id: cart[existingItemIndex].item._id }));
+    count === 1
+      ? dispatch(removeFromCart({ id: cart[existingItemIndex].item._id }))
+      : dispatch(decreaseCount({ id: cart[existingItemIndex].item._id }));
   }
 
   useEffect(() => {

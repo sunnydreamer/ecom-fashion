@@ -1,6 +1,7 @@
 import { Box, Button, Divider, IconButton, Typography } from "@mui/material";
 import { useSelector, useDispatch } from "react-redux";
 import CloseIcon from "@mui/icons-material/Close";
+import DeleteOutlineOutlinedIcon from "@mui/icons-material/DeleteOutlineOutlined";
 import AddIcon from "@mui/icons-material/Add";
 import RemoveIcon from "@mui/icons-material/Remove";
 import styled from "@emotion/styled";
@@ -10,7 +11,7 @@ import {
   increaseCount,
   removeFromCart,
   setIsCartOpen,
-} from "../../state";
+} from "../../state/slices/cartSlice";
 import { useNavigate } from "react-router-dom";
 
 const FlexBox = styled(Box)`
@@ -48,7 +49,7 @@ const CartMenu = () => {
         position="fixed"
         right="0"
         bottom="0"
-        width="max(400px,30%)"
+        width="450px"
         height="100%"
         backgroundColor="white"
       >
@@ -70,8 +71,8 @@ const CartMenu = () => {
           <Box>
             {cart.map((item, i) => (
               <Box key={`${item.item.name}-${item.item._id}`}>
-                <FlexBox p="15px 0">
-                  <Box flex="1 1 40%">
+                <FlexBox p="15px 0" gap="20px">
+                  <Box flex="1 1 30%">
                     <img
                       alt={item?.item.name}
                       width="123px"
@@ -79,7 +80,7 @@ const CartMenu = () => {
                       src={item?.item.categoryPic}
                     />
                   </Box>
-                  <Box flex="1 1 60%">
+                  <Box flex="1 1 70%">
                     {/* ITEM NAME */}
                     <FlexBox mb="5px">
                       <Typography fontWeight="bold">
@@ -90,7 +91,7 @@ const CartMenu = () => {
                           dispatch(removeFromCart({ id: item.item._id }));
                         }}
                       >
-                        <CloseIcon />
+                        <DeleteOutlineOutlinedIcon />
                       </IconButton>
                     </FlexBox>
                     {/* <Typography>{item.description}</Typography> */}
@@ -99,11 +100,14 @@ const CartMenu = () => {
                       <Box
                         display="flex"
                         alignItems="center"
-                        border={`1.5px solid `}
+                        border={`1.5px solid gray`}
+                        borderRadius="15px"
                       >
                         <IconButton
                           onClick={() =>
-                            dispatch(decreaseCount({ id: item.item._id }))
+                            item.count === 1
+                              ? dispatch(removeFromCart({ id: item.item._id }))
+                              : dispatch(decreaseCount({ id: item.item._id }))
                           }
                         >
                           <RemoveIcon />

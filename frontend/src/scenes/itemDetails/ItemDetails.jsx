@@ -8,7 +8,7 @@ import FavoriteBorderOutlinedIcon from "@mui/icons-material/FavoriteBorderOutlin
 import AddIcon from "@mui/icons-material/Add";
 import RemoveIcon from "@mui/icons-material/Remove";
 import { shades } from "../../theme";
-import { addToCart } from "../../state";
+import { addToCart } from "../../state/slices/cartSlice";
 import { useDispatch } from "react-redux";
 import Rating from "@mui/material/Rating";
 import * as React from "react";
@@ -84,7 +84,6 @@ const ItemDetails = () => {
               sx={{
                 backgroundColor: "#222222",
                 color: "white",
-                borderRadius: 0,
                 width: "100%",
                 padding: "10px 40px",
                 m: "50px auto",
