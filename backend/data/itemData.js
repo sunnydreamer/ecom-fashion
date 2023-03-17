@@ -16,7 +16,7 @@ exports.data = [
     color: "white",
     style: "tee",
     tags: ["bestSeller"],
-    size: ["XS, S, M, L, XL"],
+    size: ["XS", "S", "M", "L", "XL"],
     review: 4.5,
   },
   {
@@ -36,7 +36,7 @@ exports.data = [
     color: "green",
     style: "tee",
     tags: ["newArrival"],
-    size: ["XS, S, M, L, XL"],
+    size: ["XS", "S", "M", "L", "XL"],
     review: 3,
   },
   {
@@ -56,7 +56,7 @@ exports.data = [
     color: "navy",
     style: "sweater",
     tags: ["newArrival"],
-    size: ["XS, S, M, L, XL"],
+    size: ["XS", "S", "M", "L", "XL"],
     review: 2.5,
   },
   {
@@ -76,7 +76,7 @@ exports.data = [
     color: "white",
     style: "sweater",
     tags: ["topRated"],
-    size: ["XS, S, M, L, XL"],
+    size: ["XS", "S", "M", "L", "XL"],
     review: 3,
   },
   {
@@ -96,7 +96,7 @@ exports.data = [
     color: "blue",
     style: "sweater",
     tags: ["topRated"],
-    size: ["XS, S, M, L, XL"],
+    size: ["XS", "S", "M", "L", "XL"],
     review: 0,
   },
   {
@@ -116,7 +116,7 @@ exports.data = [
     color: "kalamata",
     style: "sweater",
     tags: ["topRated"],
-    size: ["XS, S, M, L, XL"],
+    size: ["XS", "S", "M", "L", "XL"],
     review: 5,
   },
   {
@@ -136,7 +136,7 @@ exports.data = [
     color: "black",
     style: "sweater",
     tags: ["bestSeller"],
-    size: ["XS, S, M, L, XL"],
+    size: ["XS", "S", "M", "L", "XL"],
     review: 2,
   },
 ];

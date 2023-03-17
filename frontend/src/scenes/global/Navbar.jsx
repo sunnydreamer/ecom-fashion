@@ -112,8 +112,13 @@ function Navbar() {
 
     // Set the user back to null
     dispatch(setUser([]));
+    setInvisible(true);
     navigate("/");
   };
+
+  // set Invisible
+
+  const [invisible, setInvisible] = React.useState(true);
 
   // =================== drawer menu===============
   const [state, setState] = React.useState({
@@ -300,11 +305,7 @@ function Navbar() {
                   aria-expanded={open ? "true" : undefined}
                   onClick={handleClick}
                 >
-                  <Badge
-                    color="secondary"
-                    variant="dot"
-                    invisible={user === undefined}
-                  >
+                  <Badge color="secondary" variant="dot" invisible={invisible}>
                     <PersonOutlined className="navIcon" />
                   </Badge>
                 </IconButton>
@@ -355,6 +356,7 @@ function Navbar() {
                     <LogInForm
                       value={"logIn"}
                       handleModalClose={handleModalClose}
+                      setInvisible={setInvisible}
                     />
 
                     <Box width="50%" overflow="hidden">
@@ -377,6 +379,7 @@ function Navbar() {
                     <LogInForm
                       value={"signUp"}
                       handleModalClose={handleModalClose}
+                      setInvisible={setInvisible}
                     />
                     <Box width="50%" overflow="hidden">
                       <img

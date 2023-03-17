@@ -9,6 +9,8 @@ import CartMenu from "./scenes/global/CartMenu";
 import CategoryPage from "./scenes/category/CategoryPage";
 import Footer from "./scenes/global/Footer";
 import AboutPage from "./scenes/about/About";
+import Success from "./scenes/checkout/Success";
+import Cancel from "./scenes/checkout/Cancel";
 
 function App() {
   return (
@@ -18,8 +20,12 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/about" element={<AboutPage />} />
+          {/* <Route path="/checkout" element={<Checkout />} /> */}
+          <Route path="/success" element={<Success />} />
+          <Route path="/cancel" element={<Cancel />} />
+
           <Route path="/:category" element={<CategoryPage />} />
-          <Route path="checkout" element={<Checkout />} />
+
           <Route path="checkout/success" element={<Confirmation />} />
           <Route path="/:category/:itemId" element={<ItemDetails />} />
         </Routes>

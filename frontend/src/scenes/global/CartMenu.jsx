@@ -6,13 +6,16 @@ import AddIcon from "@mui/icons-material/Add";
 import RemoveIcon from "@mui/icons-material/Remove";
 import styled from "@emotion/styled";
 import { shades } from "../../theme";
-import {
+import cartSlice, {
   decreaseCount,
   increaseCount,
   removeFromCart,
   setIsCartOpen,
 } from "../../state/slices/cartSlice";
 import { useNavigate } from "react-router-dom";
+
+// inport checkout service
+import * as checkOutService from "../../utilities/checkout-service";
 
 const FlexBox = styled(Box)`
   display: flex;
@@ -31,6 +34,8 @@ const CartMenu = () => {
           return total + item.count * item.item.price;
         }, 0)
       : 0;
+
+  // console.log(JSON.stringify({ items: cart }));
 
   return (
     <Box //Overlay
@@ -152,7 +157,8 @@ const CartMenu = () => {
                 textTransform: "capitalize",
               }}
               onClick={() => {
-                navigate("/checkout");
+                // navigate("/checkout");
+                checkOutService.checkOut(cart);
                 dispatch(setIsCartOpen({}));
               }}
             >

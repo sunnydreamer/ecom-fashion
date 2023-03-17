@@ -24,7 +24,7 @@ import {
   Typography,
 } from "@mui/material";
 
-function LogInForm({ value, handleModalClose }) {
+function LogInForm({ value, handleModalClose, setInvisible }) {
   const navigate = useNavigate();
   // Create different state variables
   const [email, setEmail] = useState("");
@@ -53,7 +53,6 @@ function LogInForm({ value, handleModalClose }) {
 
   const handleSignUpSubmission = async (e) => {
     e.preventDefault();
-    setError(null);
 
     // Retrieve state
     const state = { email, password, confirm, error };
@@ -76,6 +75,7 @@ function LogInForm({ value, handleModalClose }) {
 
       // console.log(user);
       handleModalClose();
+      setInvisible(false);
       navigate("/");
     } catch (error) {
       setError("Sign Up Failed - Try Again");
@@ -93,8 +93,8 @@ function LogInForm({ value, handleModalClose }) {
 
       // Add the user to state
       dispatch(setUser(userData.data));
-
       handleModalClose();
+      setInvisible(false);
       navigate("/");
     } catch (error) {
       setError(error.message);
