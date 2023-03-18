@@ -35,6 +35,7 @@ function CategoryPage() {
 
   useEffect(() => {
     getAllItems();
+    setValue("All");
   }, [category]);
 
   const itemList = items.list
@@ -51,9 +52,10 @@ function CategoryPage() {
         margin="40px"
         fontWeight="bold"
       >
-        {category[0].toUpperCase() + category.slice(1)}'s
+        {category[0].toUpperCase() + category.slice(1)}'s {value}
       </Typography>
       <Divider />
+
       <Tabs
         value={value}
         onChange={handleChange}
@@ -64,13 +66,16 @@ function CategoryPage() {
           "& .MuiTabs-flexContainer": { flexWrap: "wrap" },
         }}
       >
-        <Tab label="ALL" value="all" />
-        <Tab label="NEW ARRIVALS" value="newArrivals" />
-        <Tab label="BEST SELLERS" value="bestSellers" />
-        <Tab label="TOP RATED" value="topRated" />
+        <Tab label="All" value="All" />
+        <Tab label="Tees" value="Tees" />
+        <Tab label="Sweaters" value="Sweaters" />
+        <Tab label="Pants" value="Pants" />
+        <Tab label="Underwears" value="Underwears" />
+        <Tab label="Sale" value="Sale" />
       </Tabs>
+
       <Box
-        margin="0 auto"
+        margin="40px auto"
         display="grid"
         gridTemplateColumns="repeat(auto-fill, 300px)"
         justifyContent="space-around"

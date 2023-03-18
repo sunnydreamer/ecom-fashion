@@ -99,7 +99,7 @@ function Item({ element }) {
           style={{ cursor: "pointer" }}
         />
         <Box
-          display={isHovered ? "block" : "none"}
+          display={isHovered || count > 0 ? "block" : "none"}
           position="absolute"
           bottom="10%"
           left="0"

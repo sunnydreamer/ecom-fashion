@@ -16,7 +16,6 @@
 <!-- TODO -->
 
 - Cart sub info(size...)
-- Make quick add bar visible when it is in the cart
 - Click outside and close the cart
 - Home page
 - Drawer Menu
@@ -24,7 +23,7 @@
 - Product Review
 - Create more products
 - Update picture in our own picture storage
-- Empty cart
+
 - Log in model clost button
 - decrese button in category page bug
 - account icon's anchor
@@ -33,6 +32,9 @@
 - Checkout Page
 - CRUD
 - Keyword searching
+- Cart subtotal number
+- media query for product page
+- size in quick add button
 
 - 3/15
 - (x) Cart item is able to reduce to 0 by the decrease button
@@ -43,3 +45,8 @@
 
 - (x) Fixed Badge Bug
 - (x) Integrated Stripe
+
+3/17
+
+- (x) Make quick add bar visible when it is in the cart
+- (x) Empty cart
