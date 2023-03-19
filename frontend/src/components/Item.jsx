@@ -89,6 +89,10 @@ function Item({ element }) {
     getItem();
   }, []);
 
+  useEffect(() => {
+    console.log("cahnge!!");
+  }, [cart]);
+
   return (
     <Box>
       {/* picture showcase */}
@@ -104,7 +108,7 @@ function Item({ element }) {
           style={{ cursor: "pointer" }}
         />
         <Box
-          display={isHovered || count > 0 ? "block" : "none"}
+          display={isHovered ? "block" : "none"}
           position="absolute"
           bottom="10%"
           left="0"
@@ -116,15 +120,19 @@ function Item({ element }) {
             alignItems="center"
             backgroundColor="white"
             borderRadius="10px"
-            justifyContent="space-between"
+            // justifyContent="space-between"
+            justifyContent="center"
+            onClick={() => increase(element._id, cart)}
+            overflow="hidden"
           >
-            <IconButton onClick={() => decrease(element._id, cart)}>
+            {/* <IconButton onClick={() => decrease(element._id, cart)}>
               <RemoveIcon />
             </IconButton>
             <Typography>{count}</Typography>
             <IconButton onClick={() => increase(element._id, cart)}>
               <AddIcon />
-            </IconButton>
+            </IconButton> */}
+            <Button sx={{ width: "100%" }}>Quick Add</Button>
           </Box>
         </Box>
       </Box>

@@ -1,4 +1,11 @@
-import { Box, Button, Divider, IconButton, Typography } from "@mui/material";
+import {
+  Box,
+  Button,
+  Divider,
+  IconButton,
+  Typography,
+  Radio,
+} from "@mui/material";
 import Tabs from "@mui/material/Tabs";
 import Tab from "@mui/material/Tab";
 import { useParams } from "react-router-dom";
@@ -15,6 +22,12 @@ import * as React from "react";
 import { fontSize } from "@mui/system";
 import { getOneItem } from "../../utilities/items-service";
 
+// RADIO
+import RadioGroup from "@mui/material/RadioGroup";
+import FormControlLabel from "@mui/material/FormControlLabel";
+import FormControl from "@mui/material/FormControl";
+import FormLabel from "@mui/material/FormLabel";
+
 const ItemDetails = () => {
   const dispatch = useDispatch();
   const { itemId } = useParams();
@@ -23,14 +36,40 @@ const ItemDetails = () => {
   const [count, setCount] = useState(1);
   const [item, setItem] = useState(null);
   const [items, setItems] = useState([]);
+  const [sizes, setSizes] = useState([]);
+  const [size, setSize] = useState("");
+  const [color, setColor] = useState("");
 
   const getItem = async (e) => {
     const oneItem = await getOneItem(category, itemId);
     setItem(oneItem.data.item[0]);
+
+    // console.log(item);
   };
 
-  const handleChange = (event, newValue) => {
-    setValue(newValue);
+  const getSizes = async (e) => {
+    if (item) setSizes(item.size);
+  };
+
+  const handleColorChange = (e) => {
+    setColor(e.target.value);
+  };
+
+  const handleSizeChange = (e) => {
+    setSize(e.target.value);
+  };
+
+  const handleSubmission = async (e) => {
+    e.preventDefault();
+    // console.log("color is");
+    // console.log(color);
+    // console.log("size is");
+    // console.log(size);
+
+    console.log("item is");
+    console.log(item);
+
+    dispatch(addToCart({ item: { ...item, count } }));
   };
 
   // rating
@@ -39,6 +78,30 @@ const ItemDetails = () => {
   useEffect(() => {
     getItem();
   }, []);
+
+  useEffect(() => {
+    getSizes();
+  }, [item]);
+
+  useEffect(() => {
+    if (item) {
+      setItem((prevState) => ({
+        ...prevState,
+        color: color,
+      }));
+    }
+    console.log(item);
+  }, [color]);
+
+  useEffect(() => {
+    if (item) {
+      setItem((prevState) => ({
+        ...prevState,
+        size: size,
+      }));
+    }
+    console.log(item);
+  }, [size]);
 
   return item ? (
     <Box width="100%" m="80px auto" mt="120px" p="15px">
@@ -73,13 +136,98 @@ const ItemDetails = () => {
           <Typography sx={{ m: "20px auto" }}>
             {`${item.description}`}
           </Typography>
-          <Typography sx={{ mt: "5px" }}>
-            <b>Color</b>: White
-          </Typography>
-          <Typography sx={{ mt: "5px" }}>
-            <b>Size</b>: XXS, XS
-          </Typography>
-          <Box display="flex" justifyContent="center" width="100%">
+
+          {/* COLOR AND SIZE */}
+          {/* <Box mt="5px" display="flex" alignItems="center" gap="10px">
+            <Typography sx={{ width: "40px", fontWeight: "bold" }}>
+              Color:
+            </Typography>
+            <div>
+              <Radio
+                checked={size === "XS"}
+                onChange={handleChange}
+                value="xs"
+                name="radio-buttons"
+                inputProps={{ "aria-label": "XS" }}
+              />
+              <Radio
+                checked={size === "S"}
+                onChange={handleChange}
+                value="s"
+                name="radio-buttons"
+                inputProps={{ "aria-label": "S" }}
+              />
+            </div>
+          </Box>
+          <Box mt="5px" display="flex" alignItems="center" gap="10px">
+            <Typography sx={{ width: "40px", fontWeight: "bold" }}>
+              Size:
+            </Typography>
+            {sizes.map((size, i) => (
+              <Button variant="outlined" key={i}>
+                {size}
+              </Button>
+            ))}
+          </Box> */}
+
+          <FormControl
+            component="form"
+            autoComplete="off"
+            sx={{ width: "100%" }}
+            onSubmit={handleSubmission}
+          >
+            <FormLabel id="demo-row-radio-buttons-group-label">Color</FormLabel>
+            <RadioGroup
+              row
+              aria-labelledby="demo-row-radio-buttons-group-label"
+              name="row-radio-buttons-group"
+              onChange={handleColorChange}
+              defaultValue="white"
+            >
+              <FormControlLabel
+                value="white"
+                control={<Radio />}
+                label="White"
+              />
+              <FormControlLabel
+                value="black"
+                control={<Radio />}
+                label="Black"
+              />
+              <FormControlLabel value="blue" control={<Radio />} label="Blue" />
+            </RadioGroup>
+            <FormLabel id="demo-row-radio-buttons-group-label">Size</FormLabel>
+            <RadioGroup
+              row
+              aria-labelledby="demo-row-radio-buttons-group-label"
+              name="row-radio-buttons-group"
+              onChange={handleSizeChange}
+              defaultValue="Extra Small"
+            >
+              <FormControlLabel
+                value="Extra Small"
+                control={<Radio />}
+                label="Extra Small"
+              />
+              <FormControlLabel
+                value="Small"
+                control={<Radio />}
+                label="Small"
+              />
+              <FormControlLabel
+                value="Medium"
+                control={<Radio />}
+                label="Medium"
+              />
+              <FormControlLabel
+                value="Large"
+                control={<Radio />}
+                label="Large"
+              />
+            </RadioGroup>
+
+            {/* ADD TO CART BUTTOPN */}
+
             <Button
               sx={{
                 backgroundColor: "#222222",
@@ -89,11 +237,17 @@ const ItemDetails = () => {
                 m: "50px auto",
                 borderRadius: "10px",
               }}
-              onClick={() => dispatch(addToCart({ item: { ...item, count } }))}
+              // onClick={
+              //   () => handleSubmission()
+
+              //   // dispatch(addToCart({ item: { ...item, count } }))
+              // }
+              type="submit"
             >
               ADD TO CART
             </Button>
-          </Box>
+          </FormControl>
+
           <Box>
             <Box
               display="flex"

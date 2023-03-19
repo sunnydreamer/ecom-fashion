@@ -16,7 +16,7 @@ exports.data = [
     color: "white",
     style: "tee",
     tags: ["bestSeller"],
-    size: ["XS", "S", "M", "L", "XL"],
+    size: "Extra Small",
     review: 4.5,
   },
   {
@@ -33,10 +33,10 @@ exports.data = [
     description:
       "This short-sleeve crewneck tee is made of extra-fine ribbed Supima® cotton with stretch that hugs in just the right places. For days when you want t-shirt comfort with eye-catching good looks.",
     price: 35,
-    color: "green",
+    color: "white",
     style: "tee",
     tags: ["newArrival"],
-    size: ["XS", "S", "M", "L", "XL"],
+    size: "Extra Small",
     review: 3,
   },
   {
@@ -53,10 +53,10 @@ exports.data = [
     description:
       "This short-sleeve crewneck tee is made of extra-fine ribbed Supima® cotton with stretch that hugs in just the right places. For days when you want t-shirt comfort with eye-catching good looks.",
     price: 130,
-    color: "navy",
+    color: "white",
     style: "sweater",
     tags: ["newArrival"],
-    size: ["XS", "S", "M", "L", "XL"],
+    size: "Extra Small",
     review: 2.5,
   },
   {
@@ -76,7 +76,7 @@ exports.data = [
     color: "white",
     style: "sweater",
     tags: ["topRated"],
-    size: ["XS", "S", "M", "L", "XL"],
+    size: "Extra Small",
     review: 3,
   },
   {
@@ -93,10 +93,10 @@ exports.data = [
     description:
       "This short-sleeve crewneck tee is made of extra-fine ribbed Supima® cotton with stretch that hugs in just the right places. For days when you want t-shirt comfort with eye-catching good looks.",
     price: 129,
-    color: "blue",
+    color: "white",
     style: "sweater",
     tags: ["topRated"],
-    size: ["XS", "S", "M", "L", "XL"],
+    size: "Extra Small",
     review: 0,
   },
   {
@@ -113,10 +113,10 @@ exports.data = [
     description:
       "This short-sleeve crewneck tee is made of extra-fine ribbed Supima® cotton with stretch that hugs in just the right places. For days when you want t-shirt comfort with eye-catching good looks.",
     price: 129,
-    color: "kalamata",
+    color: "white",
     style: "sweater",
     tags: ["topRated"],
-    size: ["XS", "S", "M", "L", "XL"],
+    size: "Extra Small",
     review: 5,
   },
   {
@@ -133,10 +133,10 @@ exports.data = [
     description:
       "This short-sleeve crewneck tee is made of extra-fine ribbed Supima® cotton with stretch that hugs in just the right places. For days when you want t-shirt comfort with eye-catching good looks.",
     price: 108,
-    color: "black",
+    color: "white",
     style: "sweater",
     tags: ["bestSeller"],
-    size: ["XS", "S", "M", "L", "XL"],
+    size: "Extra Small",
     review: 2,
   },
 ];

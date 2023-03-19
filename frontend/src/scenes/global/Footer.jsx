@@ -9,7 +9,7 @@ import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 function Footer() {
   const isNonSmall = useMediaQuery("(min-width:1000px)");
   return (
-    <Box marginTop="70px" padding="40px 0" backgroundColor="#f5f4f4">
+    <Box padding="40px 0" backgroundColor="#f5f4f4">
       {isNonSmall ? (
         <Box
           width="85%"

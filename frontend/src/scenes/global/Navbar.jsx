@@ -147,25 +147,28 @@ function Navbar() {
       onKeyDown={toggleDrawer(anchor, false)}
     >
       <List>
-        {["Best Sellers", "Everyworld Stories"].map((text, index) => (
+        {["women", "men", "about"].map((text, index) => (
           <ListItem key={text} disablePadding>
             <ListItemButton>
-              <ListItemText primary={text} />
+              <ListItemText
+                primary={text.charAt(0).toUpperCase() + text.slice(1)}
+                onClick={() => {
+                  navigate(`/${text}`);
+                }}
+              />
             </ListItemButton>
           </ListItem>
         ))}
       </List>
       <Divider />
       <List>
-        {["What's New", "Apparel", "Denim", "Shoe & Accessories"].map(
-          (text, index) => (
-            <ListItem key={text} disablePadding>
-              <ListItemButton>
-                <ListItemText primary={text} />
-              </ListItemButton>
-            </ListItem>
-          )
-        )}
+        {["What's New", "Sales", "Help Center"].map((text, index) => (
+          <ListItem key={text} disablePadding>
+            <ListItemButton>
+              <ListItemText primary={text} />
+            </ListItemButton>
+          </ListItem>
+        ))}
       </List>
     </Box>
   );

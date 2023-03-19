@@ -1,59 +1,67 @@
-## Tech/library/framework used
+<h1>MERN Ecommerce Project</h1>
 
-<b>Built with:</b>
+## Tech Stack
 
 - React JS
 - MongoDB
+- Express
+- Node.js
+- Stripe API
 - MUI
 - SCSS
 - Redux
 - Tailwind CSS
+- JWT
+- Bcrypt
 
-<b> Font </b>
+## Features
 
-- Graphik
+- Responsive design for mobile and desktop devices
+- User authentication and authorization with JWT
+- Shopping cart and checkout functionality
 
-## TODO
+## Getting Started
 
-- Cart sub info(size...)
-- Click outside and close the cart
+### Prerequisites
 
-- Drawer Menu
-- Filter(Tag/Type)
-- Product Review
-- Create more products
-- Update picture in our own picture storage
-- account icon's anchor
-- thaiwind css theme setup
-- Connect cart to account
-- CRUD
-- Keyword searching
-- media query for product page
-- size in quick add button
-- delete in cart and show updated count in the category page
-- button color adjust
+- Node.js
+- MongoDB Atlas account
 
-## COMPLETE
+### 1. Clone the repo
 
-- 3/15
-- (x) Cart item is able to reduce to 0 by the decrease button
-- (x) Trash button udpate, boarder radius update
-- (x) User Login/Logout and navbar update
+```
+git clone https://github.com/your_username_/Project-Name.git
+```
 
--3/16
+### 2. Install NPM packages
 
-- (x) Fixed Badge Bug
-- (x) Integrated Stripe
+```
+npm install
+```
 
-3/17
+### 3. Create a .env file in the root directory and add the following environment variables:
 
-- (x) Make quick add bar visible when it is in the cart
-- (x) Empty cart
+```
+NODE_ENV=development
+PORT=5000
+MONGO_URI=<your_mongodb_uri>
+JWT_SECRET=<your_jwt_secret>
+```
 
-3/18
+### 4.Run the development server
 
-- (x) Tab update
-- (x) Log in model clost button
-- (x) Cart subtotal number
-- (x) Home page
-- (x) decrese button in category page bug
+```
+npm run dev
+```
+
+## Contributing
+
+When contributing to this repository, please first discuss the change you wish to
+make via issue, email, or any other method with the owners of this repository
+before making a change.
+
+## License
+
+This project is licensed under the MIT License - see the LICENSE file for details.
+
+MIT © Sunny Dreamer

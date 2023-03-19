@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { Box, Button, Divider, IconButton, Typography } from "@mui/material";
 import { useSelector, useDispatch } from "react-redux";
 import CloseIcon from "@mui/icons-material/Close";
@@ -49,6 +50,22 @@ const CartMenu = () => {
     return `${totalCount} Items`;
   }
 
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      const modal = document.querySelector(".cart-menu-modal");
+      if (modal && !modal.contains(event.target)) {
+        dispatch(setIsCartOpen(false));
+      }
+    };
+
+    if (isCartOpen) {
+      document.addEventListener("mousedown", handleClickOutside);
+    }
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [dispatch, isCartOpen]);
+
   return (
     <Box //Overlay
       display={isCartOpen ? "block" : "none"}
@@ -69,6 +86,7 @@ const CartMenu = () => {
         width="450px"
         height="100%"
         backgroundColor="white"
+        className="cart-menu-modal"
       >
         {cart.length > 0 ? (
           <Box
@@ -93,7 +111,9 @@ const CartMenu = () => {
             {/* CART LIST */}
             <Box padding="35px">
               {cart.map((item, i) => (
-                <Box key={`${item.item.name}-${item.item._id}`}>
+                <Box
+                  key={`${item.item.name}-${item.item._id}-${item.item.color}-${item.item.size}-${i}`}
+                >
                   <FlexBox p="15px 0" gap="20px">
                     <Box flex="1 1 30%">
                       <img
@@ -109,14 +129,25 @@ const CartMenu = () => {
                         <Typography fontWeight="bold">
                           {item.item.name}
                         </Typography>
+
                         <IconButton
                           onClick={() => {
-                            dispatch(removeFromCart({ id: item.item._id }));
+                            dispatch(
+                              removeFromCart({
+                                id: item.item._id,
+                                color: item.item.color,
+                                size: item.item.size,
+                              })
+                            );
                           }}
                         >
                           <DeleteOutlineOutlinedIcon />
                         </IconButton>
                       </FlexBox>
+                      {/* Item Size and Color */}
+                      <Typography sx={{ color: "gray" }}>
+                        {item.item.size} | {item.item.color}
+                      </Typography>
                       {/* <Typography>{item.description}</Typography> */}
                       {/* AMOUNT */}
                       <FlexBox m="15px 0">
@@ -130,7 +161,11 @@ const CartMenu = () => {
                             onClick={() =>
                               item.count === 1
                                 ? dispatch(
-                                    removeFromCart({ id: item.item._id })
+                                    removeFromCart({
+                                      id: item.item._id,
+                                      color: item.item.color,
+                                      size: item.item.size,
+                                    })
                                   )
                                 : dispatch(decreaseCount({ id: item.item._id }))
                             }
