@@ -117,12 +117,27 @@ exports.getAllItems = async (request, response) => {
 exports.getCategory = async (request, response) => {
   try {
     const items = await Item.find({ category: request.params.category });
+    const tee = await Item.find({
+      category: request.params.category,
+      style: "tee",
+    });
+    const sweater = await Item.find({
+      category: request.params.category,
+      style: "sweater",
+    });
+    const pants = await Item.find({
+      category: request.params.category,
+      style: "pants",
+    });
 
     // Send response
     response.status(200).json({
       status: "success",
       data: {
         items,
+        tee,
+        sweater,
+        pants,
       },
     });
   } catch (error) {

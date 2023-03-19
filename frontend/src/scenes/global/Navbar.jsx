@@ -1,6 +1,7 @@
 import * as React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Badge, Box, IconButton, useMediaQuery, Button } from "@mui/material";
+
 import { shades } from "../../theme";
 
 import {
@@ -10,6 +11,7 @@ import {
 } from "@mui/icons-material";
 
 import MenuIcon from "@mui/icons-material/Menu";
+import CloseIcon from "@mui/icons-material/Close";
 import { useNavigate } from "react-router-dom";
 import AnnouncementBar from "./AnnouncementBar";
 
@@ -359,7 +361,20 @@ function Navbar() {
                       setInvisible={setInvisible}
                     />
 
-                    <Box width="50%" overflow="hidden">
+                    <Box width="50%" overflow="hidden" position="relative">
+                      <IconButton
+                        onClick={() => {
+                          handleModalClose();
+                        }}
+                        sx={{
+                          position: "absolute",
+                          top: "10px",
+                          right: "10px",
+                          color: "white",
+                        }}
+                      >
+                        <CloseIcon />
+                      </IconButton>
                       <img
                         src="https://media.everlane.com/image/upload/c_fill,w_384,ar_380:655,q_auto,dpr_1.0,g_face:center,f_auto,fl_progressive:steep/Modal_Desktop-05102022_pyajh1"
                         alt=""
@@ -381,7 +396,20 @@ function Navbar() {
                       handleModalClose={handleModalClose}
                       setInvisible={setInvisible}
                     />
-                    <Box width="50%" overflow="hidden">
+                    <Box width="50%" overflow="hidden" position="relative">
+                      <IconButton
+                        onClick={() => {
+                          handleModalClose();
+                        }}
+                        sx={{
+                          position: "absolute",
+                          top: "10px",
+                          right: "10px",
+                          color: "white",
+                        }}
+                      >
+                        <CloseIcon />
+                      </IconButton>
                       <img
                         src="https://media.everlane.com/image/upload/c_fill,w_384,ar_380:655,q_auto,dpr_1.0,g_face:center,f_auto,fl_progressive:steep/Modal_Desktop-05102022_pyajh1"
                         alt=""

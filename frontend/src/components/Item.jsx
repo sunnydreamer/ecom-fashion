@@ -67,13 +67,18 @@ function Item({ element }) {
   }
 
   function decrease(elementId, cart) {
-    setCount(Math.max(count - 1, 0));
     // console.log(cart);
 
     const existingItemIndex = cart.findIndex(
       (item) => item.item._id === elementId
     );
     // console.log(existingItemIndex);
+
+    if (existingItemIndex === -1) {
+      return;
+    } else {
+      setCount(Math.max(count - 1, 0));
+    }
 
     count === 1
       ? dispatch(removeFromCart({ id: cart[existingItemIndex].item._id }))

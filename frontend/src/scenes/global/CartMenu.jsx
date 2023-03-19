@@ -37,6 +37,18 @@ const CartMenu = () => {
 
   // console.log(JSON.stringify({ items: cart }));
 
+  function getTotalItemCount(cart) {
+    let totalCount = 0;
+
+    if (cart.length > 0) {
+      for (let i = 0; i < cart.length; i++) {
+        totalCount += cart[i].count;
+      }
+    }
+
+    return `${totalCount} Items`;
+  }
+
   return (
     <Box //Overlay
       display={isCartOpen ? "block" : "none"}
@@ -149,7 +161,7 @@ const CartMenu = () => {
             <Box m="20px 0" padding="35px">
               <FlexBox m="20px 0">
                 <Typography fontWeight={"bold"}>
-                  Subtotal({cart.length} items)
+                  Subtotal ({getTotalItemCount(cart)})
                 </Typography>
                 <Typography fontWeight={"bold"}>${totalPrice}</Typography>
               </FlexBox>
