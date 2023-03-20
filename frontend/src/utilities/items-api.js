@@ -1,5 +1,4 @@
-// const BASE_URL = "https://sg-66bq.onrender.com/api/dishes";
-const BASE_URL = "http://localhost:5000/api/items";
+const BASE_URL = "https://everlanebe.onrender.com/api/items";
 
 export async function allItems() {
   const res = await fetch(BASE_URL, {

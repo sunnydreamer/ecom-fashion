@@ -1,4 +1,4 @@
-const BASE_URL = "http://localhost:5000/api/users";
+const BASE_URL = "https://everlanebe.onrender.com/api/users";
 
 export async function signUp(userData) {
   // Fetch uses an options object as a second arg to make requests

@@ -1,4 +1,4 @@
-const BASE_URL = "http://localhost:5000/checkout";
+const BASE_URL = "https://everlanebe.onrender.com/checkout";
 
 export async function checkOut(cart) {
   const res = await fetch(BASE_URL, {
