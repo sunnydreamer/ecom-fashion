@@ -18,8 +18,6 @@ const uri =
   "mongodb+srv://sunny:sunny@cluster0.argrfpu.mongodb.net/everlane?retryWrites=true&w=majority";
 
 // console.log(process.env.DATABASE);
-mongoose.Promise = global.Promise;
-
 const DB = mongoose
   .connect(uri, {
     useNewUrlParser: true,
