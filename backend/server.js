@@ -37,7 +37,7 @@ app.use(function (req, res, next) {
 // cors
 app.use(
   cors({
-    origin: ["https://localhost:3000", "https://everlanebe.onrender.com/"],
+    origin: ["https://localhost:3000", "https://everlanefe.onrender.com"],
   })
 );
 app.use(express.static("public"));
