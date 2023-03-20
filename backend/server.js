@@ -14,17 +14,15 @@ const checkoutRouter = require("./routes/api/checkout");
 const cors = require("cors");
 const mongoose = require("mongoose");
 
-require("dotenv").config();
+const dotenv = require("dotenv");
+dotenv.config();
 // require("./config/database");
 
 const DB = mongoose
-  .connect(
-    process.env.DATABASE.replace("<password>", process.env.DATABASE_PASSWORD),
-    {
-      useNewUrlParser: true,
-      useUnifiedTopology: true,
-    }
-  )
+  .connect(process.env.DATABASE, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+  })
   .then(() => {
     console.log("DB CONNECTION SUCCESSFUL!");
   });
