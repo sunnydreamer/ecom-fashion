@@ -4,12 +4,6 @@ const userRouter = require("./routes/api/users");
 const itemRouter = require("./routes/api/items");
 const checkoutRouter = require("./routes/api/checkout");
 
-//sk_test_51MioWTG43Egf7Rjxq51YVVjYfjploqIGEtRemK88iOEX1VLv5VPSgUwHx8jGbuUuJXOJsCrkR1u3w66TMw5WAHwB00nCtgIknn
-//
-// COFFEE = price_1MmOMJG43Egf7RjxXKWii0S1
-// Sunglasses = price_1MmONWG43Egf7Rjx7hmZhSLA
-// camera = price_1MmOO6G43Egf7Rjx7uyMd2kN
-
 // IMPORT CORS
 const cors = require("cors");
 const mongoose = require("mongoose");
@@ -19,13 +13,10 @@ dotenv.config();
 // require("./config/database");
 
 const DB = mongoose
-  .connect(
-    process.env.DATABASE.replace("<password>", process.env.DATABASE_PASSWORD),
-    {
-      useNewUrlParser: true,
-      useUnifiedTopology: true,
-    }
-  )
+  .connect(process.env.DATABASE, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+  })
   .then(() => {
     console.log("DB CONNECTION SUCCESSFUL!");
   });
