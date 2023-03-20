@@ -6,20 +6,14 @@ const checkoutRouter = require("./routes/api/checkout");
 
 // IMPORT CORS
 const cors = require("cors");
+require("dotenv").config();
 const mongoose = require("mongoose");
 
-const dotenv = require("dotenv");
-dotenv.config();
 // require("./config/database");
 
-const DB = mongoose
-  .connect(process.env.DATABASE, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-  })
-  .then(() => {
-    console.log("DB CONNECTION SUCCESSFUL!");
-  });
+const DB = mongoose.connect(process.env.DATABASE, {}).then(() => {
+  console.log("DB CONNECTION SUCCESSFUL!");
+});
 
 // middleware to set the Access-Control-Allow-Origin header
 app.use(function (req, res, next) {
