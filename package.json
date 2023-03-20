@@ -7,8 +7,7 @@
     "start": "npm install && npm run server",
     "server": "nodemon backend/server.js",
     "client": "npm run start --prefix frontend",
-    "dev": "concurrently \"npm run server\" \"npm run client\" ",
-    "build": "webpack --config webpack.config.prod.js"
+    "dev": "concurrently \"npm run server\" \"npm run client\" "
   },
   "keywords": [],
   "author": "",
