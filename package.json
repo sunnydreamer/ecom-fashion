@@ -1,7 +1,7 @@
 {
   "name": "ecom-everlane",
   "version": "1.0.0",
-  "description": "",
+  "description": "<h1>MERN Ecommerce Project</h1>",
   "main": "index.js",
   "scripts": {
     "start": "npm install && npm run server",
@@ -29,6 +29,15 @@
     "yup": "^1.0.2"
   },
   "devDependencies": {
-    "webpack-cli": "^5.0.1"
-  }
+    "webpack-cli": "^5.0.1",
+    "webpack-merge": "^5.8.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sunnydreamer/ecom-fashion.git"
+  },
+  "bugs": {
+    "url": "https://github.com/sunnydreamer/ecom-fashion/issues"
+  },
+  "homepage": "https://github.com/sunnydreamer/ecom-fashion#readme"
 }
