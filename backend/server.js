@@ -13,13 +13,9 @@ const mongoose = require("mongoose");
 
 // require("./config/database");
 
-const uri =
-  process.env.DATABASE ||
-  "mongodb+srv://sunny:sunny@cluster0.argrfpu.mongodb.net/everlane?retryWrites=true&w=majority";
-
 // console.log(process.env.DATABASE);
 const DB = mongoose
-  .connect(uri, {
+  .connect(process.env.DATABASE, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
   })
