@@ -11,9 +11,17 @@ const mongoose = require("mongoose");
 
 // require("./config/database");
 
-const DB = mongoose.connect(process.env.DATABASE, {}).then(() => {
-  console.log("DB CONNECTION SUCCESSFUL!");
-});
+const uri = process.env.DATABASE;
+
+const DB = mongoose
+  .connect(uri, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+  })
+  .then(() => {
+    console.log("DB CONNECTION SUCCESSFUL!");
+  })
+  .catch((error) => console.error(error.message));
 
 // middleware to set the Access-Control-Allow-Origin header
 app.use(function (req, res, next) {
