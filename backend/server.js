@@ -12,9 +12,22 @@ const checkoutRouter = require("./routes/api/checkout");
 
 // IMPORT CORS
 const cors = require("cors");
+const mongoose = require("mongoose");
 
 require("dotenv").config();
-require("./config/database");
+// require("./config/database");
+
+const DB = mongoose
+  .connect(
+    process.env.DATABASE.replace("<password>", process.env.DATABASE_PASSWORD),
+    {
+      useNewUrlParser: true,
+      useUnifiedTopology: true,
+    }
+  )
+  .then(() => {
+    console.log("DB CONNECTION SUCCESSFUL!");
+  });
 
 // middleware to set the Access-Control-Allow-Origin header
 app.use(function (req, res, next) {
