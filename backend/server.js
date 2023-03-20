@@ -1,3 +1,5 @@
+require("dotenv").config();
+
 const express = require("express");
 const app = express();
 const userRouter = require("./routes/api/users");
@@ -6,12 +8,17 @@ const checkoutRouter = require("./routes/api/checkout");
 
 // IMPORT CORS
 const cors = require("cors");
-require("dotenv").config();
+
 const mongoose = require("mongoose");
 
 // require("./config/database");
 
-const uri = process.env.DATABASE;
+const uri =
+  process.env.DATABASE ||
+  "mongodb+srv://sunny:sunny@cluster0.argrfpu.mongodb.net/everlane?retryWrites=true&w=majority";
+
+// console.log(process.env.DATABASE);
+mongoose.Promise = global.Promise;
 
 const DB = mongoose
   .connect(uri, {
