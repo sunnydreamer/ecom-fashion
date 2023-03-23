@@ -31,7 +31,7 @@ Design inpiration by - <a href="https://www.everlane.com/">Everlane. </a>
 
 #### Home Page
 
-![Home Page](https://i.imgur.com/LycgQSp.png)
+![Home Page](https://i.imgur.com/idUrk8b.png)
 <br/><br/>
 
 #### Category Page
