@@ -139,4 +139,64 @@ exports.data = [
     size: "Extra Small",
     review: 2,
   },
+  {
+    name: "The Painter Jean",
+    categoryPic:
+      "https://media.everlane.com/image/upload/c_fill,w_640,ar_250:312,q_auto,dpr_1.0,f_auto,fl_progressive:steep/i/f05a1145_b95d",
+    detailPics: [
+      "https://media.everlane.com/image/upload/c_fill,w_640,ar_1:1,q_auto,dpr_1.0,f_auto,fl_progressive:steep/i/727c6b21_8e7b",
+      "https://media.everlane.com/image/upload/c_fill,w_640,ar_1:1,q_auto,dpr_1.0,f_auto,fl_progressive:steep/i/eeec84ca_8f7e",
+      "https://media.everlane.com/image/upload/c_fill,w_640,ar_1:1,q_auto,dpr_1.0,f_auto,fl_progressive:steep/i/c23dfeaa_7472",
+      "https://media.everlane.com/image/upload/c_fill,w_640,ar_1:1,q_auto,dpr_1.0,f_auto,fl_progressive:steep/i/64df2e97_46ad",
+    ],
+    category: "women",
+    description:
+      "Taking style cues from our Rigid Way-High® Jean, The Painter Jean is a high-rise fit, with straight legs, and a workwear inspired vibe. Featuring utility-style front patch panels and an exposed button fly, it's made with a heavier, non-stretch organic cotton to give it a vintage, utilitarian feel.",
+    price: 128,
+    color: "white",
+    style: "pants",
+    tags: ["bestSeller"],
+    size: "Extra Small",
+    review: 5,
+  },
+  {
+    name: "The Organic Cotton Weekend Tee Dress",
+    categoryPic:
+      "https://media.everlane.com/image/upload/c_fill,w_640,ar_250:312,q_auto,dpr_1.0,f_auto,fl_progressive:steep/i/20c66511_897c",
+    detailPics: [
+      "https://media.everlane.com/image/upload/c_fill,w_640,ar_1:1,q_auto,dpr_1.0,f_auto,fl_progressive:steep/i/a5601dc7_905c",
+      "https://media.everlane.com/image/upload/c_fill,w_640,ar_1:1,q_auto,dpr_1.0,f_auto,fl_progressive:steep/i/c4c31fd8_1c2b",
+      "https://media.everlane.com/image/upload/c_fill,w_640,ar_1:1,q_auto,dpr_1.0,f_auto,fl_progressive:steep/i/5c096cdc_c986",
+      "https://media.everlane.com/image/upload/c_fill,w_640,ar_1:1,q_auto,dpr_1.0,f_auto,fl_progressive:steep/i/20c66511_897c",
+    ],
+    category: "women",
+    description:
+      "The go-to dress you'll want to wear all weekend- now in Organic Cotton! Made of lightweight cotton with a soft, lived-in feel, the Weekend Tee Dress is like your favorite vintage tee—in dress form",
+    price: 128,
+    color: "white",
+    style: "tee",
+    tags: ["bestSeller"],
+    size: "Extra Small",
+    review: 5,
+  },
+  {
+    name: "The Way-High® Canvas Short",
+    categoryPic:
+      "https://media.everlane.com/image/upload/c_fill,w_640,ar_250:312,q_auto,dpr_1.0,f_auto,fl_progressive:steep/i/8a4aebd6_656b",
+    detailPics: [
+      "https://media.everlane.com/image/upload/c_fill,w_640,ar_1:1,q_auto,dpr_1.0,f_auto,fl_progressive:steep/i/a5601dc7_905c",
+      "https://media.everlane.com/image/upload/c_fill,w_640,ar_1:1,q_auto,dpr_1.0,f_auto,fl_progressive:steep/i/c4c31fd8_1c2b",
+      "https://media.everlane.com/image/upload/c_fill,w_640,ar_1:1,q_auto,dpr_1.0,f_auto,fl_progressive:steep/i/5c096cdc_c986",
+      "https://media.everlane.com/image/upload/c_fill,w_640,ar_1:1,q_auto,dpr_1.0,f_auto,fl_progressive:steep/i/20c66511_897c",
+    ],
+    category: "women",
+    description:
+      "The go-to dress you'll want to wear all weekend- now in Organic Cotton! Made of lightweight cotton with a soft, lived-in feel, the Weekend Tee Dress is like your favorite vintage tee—in dress form",
+    price: 128,
+    color: "pink",
+    style: "pants",
+    tags: ["bestSeller"],
+    size: "Extra Small",
+    review: 3,
+  },
 ];

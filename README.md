@@ -1,5 +1,11 @@
 <h1>MERN Ecommerce Project</h1>
 
+An online e-commerce store built with the MERN stack.
+
+Deployed with Render - <a href="https://everlanefe.onrender.com">Site Demo</a>
+
+Design inpiration by - <a href="https://www.everlane.com/">Everlane. </a>
+
 ## Tech Stack
 
 - React JS
@@ -17,8 +23,42 @@
 ## Features
 
 - Responsive design for mobile and desktop devices
-- User authentication and authorization with JWT
+- User authentication and authorization with JWT and Bcrypt
 - Shopping cart and checkout functionality
+- Payment gateway with Stripe API
+
+## Screenshots
+
+#### Home Page
+
+![Home Page](https://i.imgur.com/LycgQSp.png)
+<br/><br/>
+
+#### Category Page
+
+![Category Page](https://i.imgur.com/p4HIopv.png)
+<br/><br/>
+
+#### Product Show Page
+
+![Product Show Page](https://i.imgur.com/pRb2WHU.png)
+<br/><br/>
+
+#### Shopping Cart
+
+![Shopping Cart](https://i.imgur.com/nlC9tjF.png)
+
+#### Shopping Cart Empty
+
+![Shopping Cart Empty](https://i.imgur.com/13UEw3T.png)
+
+#### Auth Modal
+
+![Auth Modal](https://i.imgur.com/HxOXGJz.png)
+
+#### Checkout Page
+
+![Checkout Page](https://i.imgur.com/Wu0EyWi.png)
 
 ## Getting Started
 
